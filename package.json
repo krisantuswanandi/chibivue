@@ -1,0 +1,11 @@
+{
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "playground"
+  ],
+  "scripts": {
+    "play": "cd playground && bun run dev"
+  }
+}
