@@ -1,9 +1,9 @@
 {
-  "name": "chibivue",
+  "name": "@chibivue/runtime-dom",
   "module": "index.ts",
   "type": "module",
   "dependencies": {
-    "@chibivue/runtime-dom": "workspace:*"
+    "@chibivue/runtime-core": "workspace:*"
   },
   "devDependencies": {
     "bun-types": "latest"
