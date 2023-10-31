@@ -1,3 +1,5 @@
+import { VNode } from "./vnode";
+
 export type ComponentOptions = {
-  render: () => string;
+  render: () => VNode;
 };
