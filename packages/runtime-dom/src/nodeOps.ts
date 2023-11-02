@@ -1,6 +1,6 @@
 import { RendererOptions } from "@chibivue/runtime-core";
 
-export const nodeOps: RendererOptions<Node> = {
+export const nodeOps: Omit<RendererOptions, "patchProp"> = {
   insert(child, parent, anchor) {
     parent.insertBefore(child, anchor || null);
   },

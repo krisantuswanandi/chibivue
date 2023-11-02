@@ -3,8 +3,12 @@
 
 import { CreateAppFunction, createRenderer } from "@chibivue/runtime-core";
 import { nodeOps } from "./nodeOps";
+import { patchProp } from "./patchProp";
+import { extend } from "@chibivue/shared";
 
-const renderer = createRenderer(nodeOps);
+const rendererOptions = /*#__PURE__*/ extend({ patchProp }, nodeOps);
+
+const renderer = createRenderer(rendererOptions);
 
 function normalizeContainer(container: Element | string) {
   if (typeof container === "string") {

@@ -7,7 +7,11 @@ export interface RendererNode {
 
 export interface RendererElement extends RendererNode {}
 
-export interface RendererOptions<HostNode = RendererNode> {
+export interface RendererOptions<
+  HostNode = RendererNode,
+  HostElement = RendererElement
+> {
+  patchProp(el: HostElement, key: string, value: any): void;
   insert(el: HostNode, parent: HostNode, anchor?: HostNode | null): void;
   createElement(type: string): HostNode;
   createText(text: string): HostNode;
@@ -21,6 +25,7 @@ export type RootRenderFunction<HostElement = RendererElement> = (
 
 export function createRenderer(options: RendererOptions) {
   const {
+    patchProp: hostPatchProp,
     createElement: hostCreateElement,
     createText: hostCreateText,
     insert: hostInsert,
@@ -33,7 +38,7 @@ export function createRenderer(options: RendererOptions) {
       const el = hostCreateElement(vnode.type);
 
       for (const key in vnode.props) {
-        el.setAttribute(key, vnode.props[key]);
+        hostPatchProp(el, key, vnode.props[key]);
       }
 
       for (const child of vnode.children) {
