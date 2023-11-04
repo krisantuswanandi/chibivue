@@ -6,7 +6,7 @@ import { nodeOps } from "./nodeOps";
 import { patchProp } from "./patchProp";
 import { extend } from "@chibivue/shared";
 
-const rendererOptions = /*#__PURE__*/ extend({ patchProp }, nodeOps);
+const rendererOptions = extend({ patchProp }, nodeOps);
 
 const renderer = createRenderer(rendererOptions);
 
